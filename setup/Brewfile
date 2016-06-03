@@ -1,0 +1,62 @@
+tap 'caskroom/cask'
+tap 'homebrew/brewdler'
+tap 'homebrew/dupes'
+tap 'homebrew/versions'
+brew 'autoconf'
+brew 'automake'
+brew 'bash'
+brew 'brew-cask'
+brew 'cloog018'
+brew 'coreutils'
+brew 'ctags'
+brew 'ffmpeg'
+brew 'fontconfig', args: ['universal']
+brew 'freetype', args: ['universal']
+brew 'gcc49'
+brew 'gd', args: ['universal']
+brew 'gdbm'
+brew 'git'
+brew 'gmp4'
+brew 'go'
+brew 'graphicsmagick'
+brew 'imagemagick'
+brew 'isl011'
+brew 'jasper', args: ['universal']
+brew 'jpeg', args: ['universal']
+brew 'jq'
+brew 'lame'
+brew 'libevent'
+brew 'libgpg-error'
+brew 'libgphoto2', args: ['universal']
+brew 'libicns', args: ['universal']
+brew 'libksba'
+brew 'libmpc08'
+brew 'libpng', args: ['universal']
+brew 'libtiff', args: ['universal']
+brew 'libtool', args: ['universal']
+brew 'libusb', args: ['universal']
+brew 'libusb-compat', args: ['universal']
+brew 'libvo-aacenc'
+brew 'libyaml'
+brew 'little-cms2', args: ['universal']
+brew 'makedepend'
+brew 'mpfr2'
+brew 'mplayer'
+brew 'openssh', args: ['with-keychain-support']
+brew 'openssl', args: ['universal']
+brew 'pcre'
+brew 'pkg-config'
+brew 'readline'
+brew 'reattach-to-user-namespace'
+brew 'sane-backends', args: ['universal']
+brew 'tmux'
+brew 'wine'
+brew 'x264'
+brew 'xvid'
+brew 'xz'
+brew 'yasm'
+brew 'youtube-dl'
+brew 'z'
+brew 'zsh'
+cask 'vagrant'
+cask 'xquartz'

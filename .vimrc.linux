@@ -1,0 +1,191 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+call vundle#begin('~/some/path/here')
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/unite-help'
+Plugin 'ujihisa/unite-colorscheme'
+Plugin 'Shougo/unite-outline'
+Plugin 'osyo-manga/unite-fold'
+Plugin 'kmnk/vim-unite-giti'
+Plugin 'thinca/vim-unite-history'
+Plugin 'osyo-manga/unite-quickfix'
+Plugin 'moznion/unite-git-conflict.vim'
+Plugin 'Shougo/unite-session'
+Plugin 'osyo-manga/unite-vimpatches'
+Plugin 'tsukkee/unite-tag'
+Plugin 'rhysd/unite-zsh-cdr.vim'
+Plugin 'osyo-manga/unite-vimmer'
+Plugin 'osyo-manga/ref-lynx'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'deris/vim-rengbang'
+Plugin 'deris/vim-visualinc'
+Plugin 'h1mesuke/vim-alignta'
+Plugin 'tyru/caw.vim'
+Plugin 'ujihisa/neco-look'
+Plugin 'rhysd/vim-grammarous'
+Plugin 'thinca/vim-quickrun'
+Plugin 'koron/codic-vim'
+Plugin 'rhysd/unite-codic.vim'
+Plugin 'Shougo/vimproc'
+Plugin 'mattn/webapi-vim'
+Plugin 'vim-jp/vital.vim'
+Plugin 'osyo-manga/unite-vital-module'
+Plugin 'osyo-manga/vital-over'
+Plugin 'osyo-manga/vital-reunions'
+Plugin 'osyo-manga/vital-coaster'
+Plugin 'thinca/vim-ref'
+Plugin 'mojako/ref-sources.vim'
+Plugin 'tokuhirom/jsref'
+Plugin 'mustardamus/jqapi'
+Plugin 'soh335/vim-ref-jquery'
+Plugin 'matchit.zip'
+Plugin 'sjl/gundo.vim'
+Plugin 'kana/vim-niceblock'
+Plugin 'thinca/vim-visualstar'
+Plugin 'osyo-manga/vim-over'
+Plugin 'vim-jp/autofmt'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rhysd/clever-f.vim'
+Plugin 'rhysd/accelerated-jk'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-entire'
+Plugin 'kana/vim-textobj-fold'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'kana/vim-textobj-line'
+Plugin 'kana/vim-textobj-syntax'
+Plugin 'kana/vim-textobj-django-template'
+Plugin 'thinca/vim-textobj-between'
+Plugin 'mattn/vim-textobj-url'
+Plugin 'osyo-manga/vim-textobj-multiblock'
+Plugin 'lucapette/vim-textobj-underscore'
+Plugin 'wellle/targets.vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fugitive'
+Plugin 'cohama/agit.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'thinca/vim-openbuf'
+Plugin 'rhysd/committia.vim'
+Plugin 'itchyny/lightline.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'osyo-manga/vim-brightest'
+Plugin 't9md/vim-quickhl'
+Plugin 'mattn/disableitalic-vim'
+Plugin 'kana/vim-submode'
+Plugin 'tyru/open-browser.vim'
+Plugin 'tyru/open-browser-github.vim'
+Plugin 'thinca/vim-qfreplace'
+Plugin 'pangloss/vim-javascript'
+Plugin 'wavded/vim-stylus'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'othree/html5.vim'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'kannokanno/previm'
+Plugin 'groenewege/vim-less'
+Plugin 'heavenshell/vim-pydocstring'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'mkomitee/vim-gf-python'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'derekwyatt/vim-sbt'
+Plugin 'mdreves/vim-scaladoc'
+Plugin 'gre/play2vim'
+Plugin 'aharisu/vim_goshrepl'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/CSS-one-line--multi-line-folding'
+Plugin 'vim-jp/vimdoc-ja'
+Plugin 'sjl/badwolf'
+Plugin 'cocopon/iceberg.vim'
+Plugin 'reedes/vim-colors-pencil'
+Plugin 'mattn/learn-vimscript'
+Plugin 'thinca/vim-prettyprint'
+Plugin 'tyru/capture.vim'
+Plugin 'kana/vim-vspec'
+Plugin 'thinca/vim-themis'
+Plugin 'thinca/vim-editvar'
+Plugin 'tyru/restart.vim'
+Plugin 'thinca/vim-ft-help_fold'
+Plugin 'syngan/vim-vimlint'
+Plugin 'thinca/vim-localrc'
+Plugin 'basyura/TweetVim'
+Plugin 'basyura/twibill.vim'
+Plugin 'basyura/J6uil.vim'
+Plugin 'dogrover/vim-pentadactyl'
+Plugin 'supermomonga/thingspast.vim'
+Plugin 'rbtnn/puyo.vim'
+Plugin 'thinca/vim-scouter'
+Plugin 'thinca/vim-threes'
+Plugin 'kana/vim-fakeclip'
+Plugin 'jacquesbh/vim-showmarks'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'sgur/vim-lazygutter'
+Plugin 'tacroe/unite-mark'
+Plugin 'deris/columnjump'
+Plugin 't9md/vim-textmanip'
+Plugin 't9md/vim-choosewin'
+Plugin 'deris/vim-cmdline-switch'
+Plugin 'taglist.vim'
+Plugin 'yonchu/accelerated-smooth-scroll'
+Plugin 'cohama/lexima.vim'
+Plugin 'deris/vim-shot-f'
+Plugin 'tmhedberg/matchit'
+Plugin 'elzr/vim-json'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'slim-template/vim-slim'
+Plugin 'lambdalisue/vim-gista'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'tomasr/molokai'
+
+call vundle#end()
+filetype plugin indent on
+
+syntax enable
+colorscheme molokai
+
+let g:molokai_original = 1
+let g:Powerline_symbols = 'unicode'
+let g:air_auto_write = 0
+let g:air_auto_write_nosilent = 0
+
+set t_Co=256
+set background=dark
+set clipboard=unnamedplus
+set clipboard+=unnamed,autoselect
+set laststatus=2
+
+vmap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+vmap <silent> sx :Str2HtmlEntity<cr>
+vmap <silent> sr :Entity2HtmlString<cr>
+vmap v $h
+vmap < <gv
+vmap > >gv
+vmap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+
+imap <silent><C-j> <Esc>
+imap <silent>jj <Esc>
+
+nmap <silent> <Leader>o :OverCommandLine<CR>%s//g<Left><Left>
+nmap <silent> mn :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+nmap <silent> <Leader>om y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+nmap <Leader>ass  <Plug>(AutoWriteStart)
+nmap <Leader>ast <Plug>(AutoWriteStop)
+nmap Q :q!<CR>
+nmap vy vawy
+nmap gb '[
+nmap gp ']
+nmap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+nmap <silent> cy   ciW<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+nmap f <Plug>(clever-f-f)
+nmap F <Plug>(clever-f-F)
+
+map <CR> H<Plug>(easymotion-j)
+map  <Space>  <Plug>(easymotion-bd-el)

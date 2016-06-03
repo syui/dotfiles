@@ -1,0 +1,8 @@
+hugo-incorporated
+lanyon-hugo
+davidl
+landing-page-theme
+gitbook
+!make-theme
+!recovery-theme
+!add-theme

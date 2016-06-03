@@ -1,0 +1,9 @@
+[Unit]
+Description=Battery Notify
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+
+[Install]
+WantedBy=timers.target

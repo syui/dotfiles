@@ -1,0 +1,11 @@
+hugo-incorporated
+lanyon-hugo
+davidl
+landing-page-theme
+gitbook
+!make-theme
+!recovery-theme
+!add-theme
+startbootstrap-sb-admin-2
+middleman-simple-template
+gitbook-training

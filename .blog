@@ -1,0 +1,41 @@
+# install
+gem install jekyll
+gem install octopress
+gem install bower
+gem install middleman
+go get -u -v github.com/spf13/hugo
+
+# template
+http://startbootstrap.com/
+http://startangular.com/
+http://getskeleton.com/
+http://gohugo.io/showcase/
+http://tummychow.github.io/lanyon-hugo/
+https://github.com/nilproductions/hugo-incorporated
+https://github.com/swcool/landing-page-theme
+https://github.com/flexbox/davidl
+https://github.com/syui/middleman-simple-template
+https://github.com/tryghost/Ghost
+
+# icon-font
+http://weloveiconfonts.com/
+http://fortawesome.github.io/Font-Awesome/
+https://icomoon.io/
+
+# icon
+https://www.iconfinder.com/
+http://titon.io/en/toolkit
+
+# lang
+http://slim-lang.com/
+http://sass-lang.com/
+http://kramdown.gettalong.org/
+
+# build
+https://travis-ci.org/
+
+# gitbook
+https://www.gitbook.com/
+https://github.com/catalyzeio/training
+https://github.com/onigra/gitbook-sample
+

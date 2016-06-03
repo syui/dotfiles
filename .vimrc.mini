@@ -1,0 +1,221 @@
+syntax enable
+
+set number
+set ruler
+set list
+set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<,eol:<
+set incsearch
+set hlsearch
+set nowrap
+set showmatch
+set whichwrap=h,l
+set nowrapscan
+set ignorecase
+set smartcase
+set hidden
+set history=2000
+set autoindent
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set helplang=en
+
+set nobackup
+set noswapfile
+set noundofile
+
+if has('gui_running')
+  set lines=999
+  set columns=120
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=r
+  set guioptions-=R
+  set guioptions-=l
+  set guioptions-=L
+endif
+
+colorscheme desert
+
+nnoremap <Space>w  :<C-u>w<CR>
+nnoremap <Space>q  :<C-u>q<CR>
+nnoremap <Space>Q  :<C-u>q!<CR>
+
+"nnoremap ;  :
+"nnoremap :  ;
+"vnoremap ;  :
+"vnoremap :  ;
+
+nnoremap <Space>h  ^
+vnoremap <Space>h  ^
+nnoremap <Space>l  $
+vnoremap <Space>l  $
+
+nnoremap k   gk
+nnoremap j   gj
+vnoremap k   gk
+vnoremap j   gj
+nnoremap gk  k
+nnoremap gj  j
+vnoremap gk  k
+vnoremap gj  j
+
+nnoremap <Space>/  *<C-o>
+nnoremap g<Space>/ g*<C-o>
+
+nnoremap <expr> n <SID>search_forward_p() ? 'nzv' : 'Nzv'
+nnoremap <expr> N <SID>search_forward_p() ? 'Nzv' : 'nzv'
+vnoremap <expr> n <SID>search_forward_p() ? 'nzv' : 'Nzv'
+vnoremap <expr> N <SID>search_forward_p() ? 'Nzv' : 'nzv'
+
+function! s:search_forward_p()
+  return exists('v:searchforward') ? v:searchforward : 1
+endfunction
+
+
+nnoremap <Space>o  :<C-u>for i in range(v:count1) \| call append(line('.'), '') \| endfor<CR>
+nnoremap <Space>O  :<C-u>for i in range(v:count1) \| call append(line('.')-1, '') \| endfor<CR>
+
+nnoremap <silent> tt  :<C-u>tabe<CR>
+nnoremap <C-p>  gT
+nnoremap <C-n>  gt
+
+nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
+
+nnoremap ZZ <Nop>
+nnoremap ZQ <Nop>
+
+nnoremap Q gq
+
+onoremap aa  a>
+onoremap ia  i>
+onoremap ar  a]
+onoremap ir  i]
+onoremap ad  a"
+onoremap id  i"
+
+
+inoremap jk  <Esc>
+
+
+nnoremap gs  :<C-u>%s///g<Left><Left><Left>
+vnoremap gs  :s///g<Left><Left><Left>
+
+
+cnoremap <C-f>  <Right>
+cnoremap <C-b>  <Left>
+cnoremap <C-a>  <C-b>
+cnoremap <C-e>  <C-e>
+cnoremap <C-u> <C-e><C-u>
+cnoremap <C-v> <C-f>a
+
+"" Origin
+filetype plugin on
+
+set clipboard=unnamedplus
+"set clipboard+=unnamed,autoselect
+set ambiwidth=double
+set cmdheight=1
+set laststatus=2
+set statusline=%<%F\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ %c%V%8P
+
+set noequalalways
+set expandtab
+set formatoptions=tcroqnlM1
+set formatlistpat&
+set laststatus=2
+set modeline
+set mouse=a
+set ruler
+set showcmd
+set showmode
+set updatetime=4000
+set title
+set titlestring=Vim:\ %f\ %h%r%m
+set wildmenu
+
+setl fo-=t fo+=croql
+setl ofu=syntaxcomplete#Complete
+setl ofu=pythoncomplete#Complete
+setl ofu=javascriptcomplete#CompleteJS
+setl ofu=htmlcomplete#CompleteTags
+setl ofu=csscomplete#CompleteCSS
+setl ofu=phpcomplete#CompletePHP
+setl ofu=xmlcomplete#CompleteTags
+setl ofu=ccomplete#Complete
+setl ofu=rubyomplete#Complete
+setl ofu=go#complete#Complete
+setl completeopt=longest,menuone
+
+let &formatlistpat .= '\|^\s*[*+-]\s*'
+if exists('+fuoptions')
+  set fuoptions=maxhorz,maxvert
+endif
+if exists('+guicursor')
+  set guicursor&
+  set guicursor=a:blinkwait4000-blinkon1500-blinkoff500
+endif
+if exists('+guifont')
+  set guifont=Source\ Code\ Pro:h14 antialias
+endif
+if exists('+guioptions')
+  set guioptions=cgM
+endif
+if exists('+macmeta')
+  set macmeta
+endif
+if exists('+transparency')
+  set transparency=10
+endif
+
+imap jj <ESC>
+nmap Y y$
+nmap y9 y$
+nmap y0 y^
+nmap vy vawy
+nmap gb '[
+nmap gp ']
+nmap ye ;let @"=expand("<cword>")<CR>
+nmap g<C-a> diw"=<C-r>"+1<CR>p
+nmap g<C-x> diw"=<C-r>"-1<CR>p
+nmap <silent> cy   ciW<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+nmap <silent> ciy ciw<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+nmap <silent> co :ContinuousNumber <C-a><CR>
+vmap v $h
+vmap < <gv
+vmap > >gv
+vmap <silent> cy   c<C-r>0<ESC>:let@/=@1<CR>:noh<CR>
+vmap <silent> co :ContinuousNumber <C-a><CR>
+
+aug XMLCOMP
+  au!
+  au Filetype xml imap <buffer> </ </<C-x><C-o>
+aug END
+
+aug vimrc_auto_sav
+  au!
+  au CursorHold,InsertLeave * sil! update
+aug END
+
+aug comment_outer
+  au!
+  au FileType * setlocal formatoptions-=ro
+aug END
+
+aug json_q
+  au!
+  au Filetype json setl conceallevel=0
+aug END
+
+aug edition-cursor
+    au!
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+aug END
+
+aug comment-outer
+        au!
+        au FileType * setlocal formatoptions-=ro
+aug END
+
+com! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
+

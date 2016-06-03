@@ -1,0 +1,9 @@
+rvm use 1.9.3
+
+git clone https://github.com/syui/middleman-simple-template
+
+cd middleman-simple-template
+
+bundle install
+
+middleman server

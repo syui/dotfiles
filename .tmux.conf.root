@@ -1,0 +1,49 @@
+set -g status-fg white
+set -g status-bg black
+set -g pane-border-fg colour235
+set -g pane-active-border-fg colour240
+set -g prefix ^T
+
+unbind C-b
+unbind ^z
+unbind !
+unbind "\""
+unbind %
+unbind &
+
+bind t send-prefix
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+bind r source-file ~/.tmux.conf\; display-message "~/.tmux.conf"
+bind K kill-pane
+bind C-t run "tmux last-pane || tmux last-window || tmux new-window"
+bind / list-keys -t vi-copy
+bind ^r refresh-client
+bind * list-clients
+bind d detach
+bind c new-window
+bind w choose-window
+bind C-o run "tmux last-pane || tmux last-window"
+bind ^a last-window
+bind s split-window -v -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
+bind A command-prompt -I "#W" "rename-window %%"
+bind ^q confirm-before -p "kill-window #W? (y/n)" kill-window
+bind \ confirm-before -p "kill-server? (y/n)" kill-server
+bind ^y copy-mode
+bind -r ^"[" copy-mode
+bind p paste-buffer
+bind -r ^] paste-buffer
+bind C-c run "tmux choose-buffer | xclip -i -sel c"
+bind -t vi-copy Y select-line
+bind y run 'tmux copy-mode\; send-keys Y Enter'
+bind -t vi-copy V begin-selection
+bind a run 'tmux copy-mode\; send-keys ggVG Enter'
+
+bind-key -t vi-copy C-n page-up
+bind-key -t vi-copy C-p page-down
+bind-key -t vi-copy Up page-up
+bind-key -t vi-copy Down page-down
+bind-key -t vi-copy Enter copy-pipe "xclip -i -sel c"

@@ -1,0 +1,21 @@
+TMUX_POWERLINE_SEPARATOR_LEFT_BOLD="⮂"
+TMUX_POWERLINE_SEPARATOR_LEFT_THIN="⮃"
+TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD="⮀"
+TMUX_POWERLINE_SEPARATOR_RIGHT_THIN="⮁"
+TMUX_POWERLINE_GIT="⭠"
+ICON_MEM=""
+ICON_HDD=""
+set-option -g status-left "#(~/dotfiles/.tmux/tmux-powerline/powerline.sh left)#[bg=black]#[fg=white] ${ICON_MEM} #(~/dotfiles/.tmux/tmux-powerline/segments/used-mem) #[fg=blue]#[bg=black]#[fg=white]${TMUX_POWERLINE_SEPARATOR_RIGHT_BOLD}"
+set-option -g status-right "#[bg=black]#[fg=color013]${TMUX_POWERLINE_SEPARATOR_LEFT_BOLD}#[bg=white]#[fg=black] ${ICON_HDD} #(df -h | grep disk | sed 's/  /,/g' | cut -d , -f 5) #[bg=white]#[fg=black]${TMUX_POWERLINE_SEPARATOR_LEFT_BOLD}#(~/dotfiles/.tmux/tmux-powerline/powerline.sh right)"
+
+bind y run-shell 'tmux-pbcopy'
+bind C-c run "tmux choose-buffer | pbcopy"
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+set-option -g default-command zsh
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+
+bind y run-shell 'tmux-pbcopy'
+bind C-c run "tmux choose-buffer | pbcopy"
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+set-option -g default-command zsh
+set-option -g default-command "reattach-to-user-namespace -l zsh"

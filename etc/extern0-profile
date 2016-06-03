@@ -1,0 +1,4 @@
+Description='Public Interface.'
+Interface=extern0
+Connection=ethernet
+IP='dhcp'

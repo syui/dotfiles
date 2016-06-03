@@ -1,0 +1,208 @@
+# export
+export LANG=ja_JP.UTF-8
+export PATH=$PATH:$HOME/.bin
+export PLUGIN=$HOME/.zsh
+export BUNDLE=$HOME/.vim/bundle
+export GITHUB=https://github.com
+export HISTFILE=~/.zsh_history
+export HISTSIZE=20000
+export SAVEHIST=20000
+
+# setopt
+setopt auto_cd
+setopt auto_list
+setopt auto_menu
+setopt auto_param_keys
+setopt auto_param_slash
+setopt auto_pushd
+setopt complete_aliases
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt hist_reduce_blanks  
+setopt hist_save_no_dups
+setopt hist_no_store
+setopt hist_expand
+setopt inc_append_history
+
+# zstyle
+autoload -Uz run-help
+autoload -Uz run-help-git
+autoload -Uz run-help-svn
+autoload -Uz run-help-svk
+autoload -Uz run-help-openssl
+autoload -Uz run-help-p4
+autoload -Uz run-help-sudo
+autoload zed
+autoload predict-on
+autoload history-search-end
+autoload -Uz select-word-style
+autoload -Uz zmv
+autoload -U url-quote-magic
+
+# completion
+autoload -U compinit promptinit
+compinit
+zstyle ':completion:*:default' menu select=1
+
+# zstyle
+zstyle ':zle:*' word-chars " _-./;@"
+zstyle ':zle:*' word-style unspecified
+zstyle ':completion:history-words:*' list no
+zstyle ':completion:history-words:*' menu yes
+zstyle ':completion:history-words:*' remove-all-dups yes
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' list-separator '-->'
+zstyle ':completion:*:manuals' separate-sections true
+
+# prompt
+promptinit
+prompt walters
+
+# alias
+alias su="su -"
+alias up="sudo pacman -Syu --noconfirm"
+alias v="vim"
+alias vs="v ~/.vimrc"
+alias zs="v ~/.zshrc"
+alias zr="exec $SHELL"
+alias gitssh="sed -i 's#https://github.com/#git@github.com:#g' ./.git/config" 
+case $OSTYPE in
+darwin*)
+    alias -g C='| pbcopy'
+;;
+linux*)
+if ! which xclip > /dev/null 2>&1;then
+sudo pacman -S xclip
+fi
+    alias -g C='| xclip --input --clipboard'
+;;
+cygwin*)
+    alias -g C='| putclip'
+;;
+esac
+
+# vim
+if [ ! -d $BUNDLE/vim-go ];then
+	git clone $GITHUB/fatih/vim-go $BUNDLE/vim-go
+fi
+
+if [ ! -d $BUNDLE/vim-json ];then
+  git clone $GITHUB/elzr/vim-json $BUNDLE/vim-json
+fi
+
+if [ ! -d $BUNDLE/neat-json.vim ];then
+  git clone $GITHUB/5t111111/neat-json.vim $BUNDLE/neat-json.vim
+fi
+
+# zaw
+if [ ! -d $PLUGIN/zaw ];then
+    git clone $GITHUB/zsh-users/zaw $PLUGIN/zaw
+fi
+
+# json
+if ! which jq > /dev/null 2>&1;then
+	sudo pacman -S jq --noconfirm
+fi
+
+# golang
+case $OSTYPE in
+    linux*)
+        if [ ! -f /bin/go ];then
+            sudo pacman -S go --noconfirm
+        fi
+        ;;
+esac
+
+if [ -x "`which go`" ]; then
+    export GOPATH=$HOME/go
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+fi
+
+if [ ! -f $GOPATH/bin/peco ];then
+    go get github.com/peco/peco/cmd/peco
+fi
+
+
+# plugin:completions
+if [ ! -d $PLUGIN/zsh-completions ];then
+    git clone $GITHUB/zsh-users/zsh-completions $PLUGIN/zsh-completions
+fi
+fpath=($PLUGIN/zsh-completions/src $fpath)
+
+# cdr
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+zstyle ':completion:*:*:cdr:*:*' menu selection
+zstyle ':completion:*' recent-dirs-insert both
+zstyle ':chpwd:*' recent-dirs-max 500
+zstyle ':chpwd:*' recent-dirs-default true
+zstyle ':chpwd:*' recent-dirs-pushd true
+
+# function
+function chpwd() { ls -aCFG }
+
+# source
+if [ -f ~/middleman/script/middleman.zsh ];then
+    source ~/middleman/script/middleman.zsh
+fi
+if [ -f $PLUGIN/perl.zsh ];then
+    source $PLUGIN/perl.zsh
+fi
+source $PLUGIN/zaw/zaw.zsh
+
+# bindkey
+bindkey '^x' zaw
+bindkey '^h' zaw-history
+bindkey '^@' zaw-gitdir
+bindkey '^r' zaw-open-file
+case $OSTYPE in
+    darwin*)
+        bindkey '^[^[' zaw-cdr
+        ;;
+    linux*)
+        bindkey '^j^j' zaw-cdr
+        ;;
+esac
+#bindkey '^j^k' zaw-z
+
+function cdup_dir() {
+if [[ -z "$BUFFER" ]]; then
+    echo
+    cd ..
+    ls -aF
+    zle reset-prompt
+else
+    zle self-insert 'k'
+fi
+ }
+ zle -N cdup_dir
+ bindkey '^k' cdup_dir
+
+ function cddown_dir(){
+ com='$SHELL -c "ls -AF . | grep / "'
+ while [ $? = 0 ]
+ do
+     cdir=`eval $com | peco`
+     if [ $? = 0 ];then
+         cd $cdir
+         eval $com
+     else
+         break
+     fi
+ done
+ zle reset-prompt
+}
+zle -N cddown_dir
+case $OSTYPE in
+    darwin*)
+        bindkey '^[' cddown_dir
+        ;;
+    linux*)
+        bindkey '^j' cddown_dir
+        ;;
+esac
+
+bindkey -s '^o^o' 'vim `zsh -c "ls -A" | peco`'
+

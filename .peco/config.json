@@ -1,0 +1,29 @@
+{
+  "Keymap": {
+    "M-f": "peco.ForwardWord",
+    "M-b": "peco.BackwardWord",
+
+    "M-ArrowRight": "peco.ForwardWord",
+    "M-ArrowLeft":  "peco.BackwardWord",
+
+    "C-d": "peco.DeleteForwardChar",
+    "C-h": "peco.DeleteBackwardChar",
+
+    "M-d": "peco.DeleteForwardWord",
+    "M-h": "peco.DeleteBackwardWord",
+
+    "C-l": "peco.DeleteAll",
+
+    "M-v": "peco.SelectPreviousPage",
+    "C-v": "peco.SelectNextPage",
+
+    "C-t": "peco.ToggleSelection",
+    "C-s": "peco.ToggleSelectionAndSelectNext",
+
+    "C-a": "peco.SelectAll",
+    "C-g": "peco.SelectNone",
+
+    "C-m": "peco.Finish",
+    "C-j": "peco.Finish"
+  }
+}

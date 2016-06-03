@@ -1,0 +1,66 @@
+#!/bin/zsh
+
+#tor
+if ps -ax | grep -w tor | grep -v grep > /dev/null 2>&1;then
+   unset http_proxy
+   unset https_proxy
+   unset HTTP_PROXY
+   unset HTTPS_PROXY
+   socks="--socks5 127.0.0.1:9050"
+fi
+
+dir=~/Music/miku
+file=$dir/url.txt
+mkdir -p $dir
+
+case $# in
+    0)
+        numb=""
+        #url=http://www.nicovideo.jp/mylist/${numb}
+        url=`cat ~/dotfiles/Documents/nicourl.txt | peco`
+    ;;
+    1)
+        if echo $1 | grep http > /dev/null 2>&1 ; then
+            url=$1
+            #url=${title##*/}
+        else
+            url=http://www.nicovideo.jp/mylist/${durl}
+        fi
+    ;;
+esac
+
+cd $dir
+
+url=`curl -sL --socks5 127.0.0.1:9050 $url | sed -e 's/"watch_id":"/http:\/\/www.nicovideo.jp\/watch\//g' | perl -pe 's/"}/\n/g' | perl -pe 's/,/\n/g' | grep "http://www.nicovideo.jp/watch/"`
+
+val=`echo $url | wc -l | tr -d ' '`
+for ((i=1;i<=$val;i++))
+do
+    nico=`echo $url | awk "NR==$i"`
+    echo $i:$nico
+    curl -sL --socks5 127.0.0.1:9050 -f $nico | grep -o -E '<title>.+</title>' | sed -e 's#<title>##g' -e 's#</title>##g'
+done
+
+if [ -f $file ];then
+    rm $file
+fi
+
+echo $url > $file
+
+#youtube-dl --restrict-filenames -w -a $file
+
+#tor {{{
+if ps -ax | grep -w tor | grep -v grep > /dev/null 2>&1;then
+    if which proxychains > /dev/null 2>&1;then
+        proxychains youtube-dl `cat $file`
+    elif which proxychains4 > /dev/null 2>&1;then
+        proxychains4 youtube-dl `cat $file`
+    else
+        youtube-dl -w -a $file
+    fi
+else
+    youtube-dl -w -a $file
+fi
+#}}}
+rm $file
+echo $http_proxy

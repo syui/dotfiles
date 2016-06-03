@@ -1,0 +1,5 @@
+Description='Private Interface'
+Interface=intern0
+Connection=ethernet
+IP='static'
+Address=('10.0.0.1/24')

@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+hdir=${0:a:h}
+file=${0:a:t}
+file=$hdir/lib/${file}.sh
+scpt=$hdir/lib/${file}-s
+
+cp -rf ${file} ${scpt}
+echo "esac" >> ${scpt}
+${scpt}

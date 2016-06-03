@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+dirs=${0:a:h}
+
+case $1 in
+  -h)
+    echo "no args : peco select"
+    echo "-f : 総合"
+  ;;
+  -f)
+    $dirs/script/hatena-top.sh
+  ;;
+  *)
+    $dirs/script/hatena-open.sh
+  ;;
+esac

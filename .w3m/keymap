@@ -1,0 +1,16 @@
+# カーソル下のURLをクリップボードへコピーする
+keymap m EXTERN_LINK "echo %s | pbcopy"
+
+# 現在のページのURLをクリップボードにコピーする
+keymap M EXTERN "echo %s | pbcopy"
+
+# 移動系
+keymap J NEXT_DOWN
+keymap K NEXT_UP
+keymap H NEXT_LEFT_UP
+keymap L NEXT_RIGHT_DOWN
+
+# カーソル下のURLをタブで開く
+# http://d.hatena.ne.jp/uyvkubm/
+keymap ";" TAB_LINK
+

@@ -1,0 +1,61 @@
+#!/bin/zsh
+
+#tor
+if ps -ax | grep -w tor | grep -v 'grep' > /dev/null 2>&1;then
+    unset http_proxy
+    unset HTTP_PROXY
+    unset https_proxy
+    unset HTTPS_PROXY
+fi
+
+dir=~/Music/new
+file=$dir/url.txt
+mkdir -p $dir
+
+#help
+#curl -s https://gist.githubusercontent.com/azu/239541/raw/NicoMylistDom.js
+
+case $# in
+    0)
+        numb=""
+        url=http://www.nicovideo.jp/mylist/${numb}
+        url=`cat ~/dotfiles/Documents/nicourl.txt | peco`
+    ;;
+    1)
+        if echo $1 | grep http > /dev/null 2>&1 ; then 
+            url=$1
+            #url=${title##*/}
+        else
+            url=http://www.nicovideo.jp/mylist/${1}
+        fi
+    ;;
+esac
+
+cd $dir
+
+surl=`curl $url | sed -e 's/"watch_id":"/http:\/\/www.nicovideo.jp\/watch\//g' | perl -pe 's/"}/\n/g' | perl -pe 's/,/\n/g' | grep "http://www.nicovideo.jp/watch/"`
+stime=`curl $url| sed -e 's/"watch_id":"/http:\/\/www.nicovideo.jp\/watch\//g' | perl -pe 's/"}/\n/g' | perl -pe 's/,/\n/g' | grep update_time | grep "}" | cut -d : -f2 | cut -b -10`
+url=$surl
+val=`echo $url | wc -l | tr -d ' '`
+
+if [ -f $file ];then
+    rm $file
+fi
+
+for ((i=1;i<=$val;i++))
+do
+    nico=`echo $url | awk "NR==$i"`
+    ntime=`echo $stime | awk "NR==$i"`
+    #otitle=`curl -s -f $nico | grep -o -E '<title>.+</title>' | sed -e 's#<title>##g' -e 's#</title>##g'`
+    echo "`date --date @$ntime +"%y/%m/%d"`,$nico"
+done | sort -Mr | peco | cut -d ',' -f 2- > $file
+
+if which proxychains > /dev/null 2>&1;then
+    proxychains youtube-dl `cat $file|tr '\n' ' '`
+else
+    youtube-dl -t -w -a $file
+fi
+
+#youtube-dl --restrict-filenames -w -a $file
+
+rm $file

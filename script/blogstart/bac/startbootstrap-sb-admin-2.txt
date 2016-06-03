@@ -1,0 +1,9 @@
+rvm use 2.1.5
+
+git clone https://github.com/IronSummitMedia/startbootstrap-sb-admin-2
+
+cd startbootstrap-sb-admin-2
+
+bower install
+
+jekyll server

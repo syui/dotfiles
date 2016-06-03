@@ -1,0 +1,9 @@
+source 'https://rubygems.org'
+
+gem 'jekyll'
+gem 'octopress'
+gem 'bower'
+gem 'middleman'
+#bower install startbootstrap
+
+#http://startangular.com/

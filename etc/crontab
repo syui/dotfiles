@@ -1,0 +1,2 @@
+# battery-notify
+*/1  *  *  *  * DISPLAY=:0.0 XAUTHORITY=~/.Xauthority ~/.bin/battery-notify.sh

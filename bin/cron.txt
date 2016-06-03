@@ -1,0 +1,3 @@
+*/10  *  *  *  * export DISPLAY=:0.0 XAUTHORITY=~/.Xauthority ~/bin/xml-url.sh -s
+*/3  *  *  *  * export DISPLAY=:0.0 XAUTHORITY=~/.Xauthority ~/bin/ipinfo-change.sh -s
+*/3  *  *  *  * export DISPLAY=:0.0 XAUTHORITY=~/.Xauthority ~/bin/notify-battery.sh -s

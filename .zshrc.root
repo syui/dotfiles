@@ -1,0 +1,42 @@
+autoload -U compinit promptinit
+compinit
+zstyle ':completion:*:default' menu select=1
+
+promptinit
+prompt walters
+
+alias up="pacman -Syu --noconfirm"
+alias v="vim"
+alias vs="v ~/.vimrc"
+alias zs="v ~/.zshrc"
+alias zr="exec $SHELL"
+
+function chpwd() { ls -aCFG }
+
+function cdup_dir() {
+if [[ -z "$BUFFER" ]]; then
+    echo
+    cd ..
+    ls -aF
+    zle reset-prompt
+else
+    zle self-insert 'k'
+fi
+ }
+zle -N cdup_dir
+bindkey '^k' cdup_dir
+
+case $OSTYPE in
+darwin*)
+    alias -g C='| pbcopy'
+;;
+linux*)
+if ! which xclip > /dev/null 2>&1;then
+sudo pacman -S xclip
+fi
+    alias -g C='| xclip --input --clipboard'
+;;
+cygwin*)
+    alias -g C='| putclip'
+;;
+esac

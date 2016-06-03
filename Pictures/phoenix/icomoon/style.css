@@ -1,0 +1,82 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?nwprix');
+	src:url('fonts/icomoon.eot?#iefixnwprix') format('embedded-opentype'),
+		url('fonts/icomoon.woff?nwprix') format('woff'),
+		url('fonts/icomoon.ttf?nwprix') format('truetype'),
+		url('fonts/icomoon.svg?nwprix#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-phoenix-logo:before {
+	content: "\e600";
+}
+.icon-home:before {
+	content: "\e601";
+}
+.icon-image:before {
+	content: "\e602";
+}
+.icon-mobile:before {
+	content: "\e603";
+}
+.icon-quotes-left:before {
+	content: "\e604";
+}
+.icon-switch:before {
+	content: "\e605";
+}
+.icon-menu:before {
+	content: "\e606";
+}
+.icon-link:before {
+	content: "\e607";
+}
+.icon-checkmark:before {
+	content: "\e608";
+}
+.icon-radio-checked:before {
+	content: "\e609";
+}
+.icon-embed:before {
+	content: "\e60a";
+}
+.icon-console:before {
+	content: "\e60b";
+}
+.icon-share:before {
+	content: "\e60c";
+}
+.icon-googleplus:before {
+	content: "\e60d";
+}
+.icon-facebook:before {
+	content: "\e60e";
+}
+.icon-twitter:before {
+	content: "\e60f";
+}
+.icon-feed:before {
+	content: "\e610";
+}
+.icon-vimeo2:before {
+	content: "\e611";
+}
+.icon-github:before {
+	content: "\e612";
+}

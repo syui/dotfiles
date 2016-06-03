@@ -1,0 +1,164 @@
+let g:molokai_original = 1
+let g:Powerline_symbols = 'unicode'
+let g:air_auto_write = 1
+let g:air_auto_write_nosilent = 1
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_space_jump_first = 1
+let g:EasyMotion_do_shade = 0
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_use_smartsign_us = 1
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_skipfoldedline = 0
+let g:EasyMotion_use_migemo = 1
+let g:EasyMotion_space_jump_first = 1
+let g:vimfiler_safe_mode_by_default=0
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsEditSplit="vertical"
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_history_yank_enable = 0
+let g:unite_kind_jump_list_after_jump_scroll=0
+let g:unite_enable_start_insert = 1
+let g:unite_source_rec_min_cache_files = 1000
+let g:unite_source_rec_max_cache_files = 5000
+let g:unite_source_file_mru_long_limit = 6000
+let g:unite_source_file_mru_limit = 500
+let g:unite_source_directory_mru_long_limit = 6000
+let g:unite_prompt = '❯ '
+let g:unite_winheight = 25
+let g:acp_enableAtStartup = 0
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/plugged/neosnippet-snippets/neosnippets'
+
+vmap <silent> sx :Str2HtmlEntity<cr>
+vmap <silent> sr :Entity2HtmlString<cr>
+vmap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+vmap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
+nmap <silent> <Leader>o :OverCommandLine<CR>%s//g<Left><Left>
+nmap <silent> <Leader>on :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+nmap <silent> <Leader>om y:OverCommandLine<CR>%s!<C-r>=substitute(@0, '!', '\\!', 'g')<CR>!!gI<Left><Left><Left>
+"nmap f <Plug>(clever-f-f)
+nmap F <Plug>(clever-f-F)
+nmap m <Plug>(easymotion-sn)
+nmap s <Plug>(easymotion-s2)
+nmap <CR> H<Plug>(easymotion-j)
+nmap <Space> <Plug>(easymotion-bd-wl)
+nmap [unite] <Nop>
+nmap <C-l> [unite]
+nmap <silent> [unite]g :<C-u>Unite -silent -no-quit grep:.<CR>
+nmap <silent> [unite]y :<C-u>Unite -silent history/yank<CR>
+nmap <silent> [unite]b :<C-u>Unite -silent buffer file_mru bookmark<CR>
+nmap <silent> [unite]m :<C-u>Unite -silent mapping<CR>
+nmap <silent> [unite]f :VimFilerBufferDir -split -simple -no-quit -winwidth=32<CR>
+nmap <C-p> "*p<CR>
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+	\ "\<Plug>(neosnippet_expand_or_jump)"
+	\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+	\ "\<Plug>(neosnippet_expand_or_jump)"
+	\: "\<TAB>"
+xmap <C-k> <Plug>(neosnippet_expand_target)
+
+" easymotion
+let s:air_get_line = getline('.')
+set updatetime=5000
+let s:count = 0
+let s:two_count = 1
+fu! s:air_easy_test()
+	if mode() == "n"
+		let s:count += 1
+		let s:air_test_line=getline('.')
+		if s:air_get_line != s:air_test_line
+			if s:two_count==1
+				"execute "normal \<Plug>(easymotion-j)"
+				call feedkeys("\<CR>")
+				let s:air_get_line=getline('.')
+				let s:two_count = 0
+			el
+				let s:two_count = 1 
+			en
+		en
+	en
+endf
+
+aug air_easy_test
+    au!
+    au CursorHold,CursorHoldI * call s:air_easy_test()
+aug END
+
+" neocomplate
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#auto_completion_start_length = 3
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_camel_case_completion = 1
+let g:neocomplete#enable_underbar_completion = 1
+let g:neocomplete#min_syntax_length = 3
+let g:neocomplete#enable_quick_match = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#max_list = 20
+let g:neocomplete#dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'java' : $HOME.'/.vim/dict/java.dict',
+    \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
+    \ 'coffee' : $HOME.'/.vim/dict/javascript.dict',
+    \ 'vim' : $HOME.'/.vim/dict/vim.dict'
+    \ }
+
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-g>  neocomplete#undo_completion()
+inoremap <expr><C-n>  pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
+inoremap <expr><C-p>  pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
+function! s:my_cr_function()
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  neocomplete#smart_close_popup()."\<C-h>"
+
+aug air_comp
+	au BufReadPost,BufEnter,BufWritePost :NeoCompleteBufferMakeCache <buffer>
+	au FileType python     setlocal omnifunc=pythoncomplete#Complete
+	au FileType javascript setlocal omnifunc=jscomplete#CompleteJS
+	au FileType coffee     setlocal omnifunc=jscomplete#CompleteJS
+	au FileType css        setlocal omnifunc=csscomplete#CompleteCSS
+	au FileType xml        setlocal omnifunc=xmlcomplete#CompleteTags
+	au FileType php        setlocal omnifunc=phpcomplete#CompletePHP
+	au FileType c          setlocal omnifunc=ccomplete#Complete
+	au FileType ruby       setlocal omnifunc=rubycomplete#Complete
+	au FileType tex	       setlocal textwidth=0
+	au FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
+	au FileType markdown   setlocal omnifunc=htmlcomplete#CompleteTags
+aug END
+
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.go = '\h\w*\.\?'
+let g:neocomplete#include_patterns = {
+  \ 'ruby'       : '^\s*require',
+  \ 'javascript' : '^\s*require',
+  \ 'coffee'     : '^\s*require',
+  \ }
+let g:neocomplete#include_exprs = {
+  \ 'ruby' : substitute(v:fname,'::','/','g')
+  \ }
+let g:neocomplete#include_suffixes = {
+  \ 'ruby'       : '.rb',
+  \ 'javascript' : '.js',
+  \ 'coffee'     : '.coffee',
+  \ }
+
+

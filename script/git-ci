@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+  git commit -v
+else
+  if [ "$1" = "--amend" ]; then
+    git commit -v --amend
+  else
+    git commit -m "$*"
+  fi
+fi

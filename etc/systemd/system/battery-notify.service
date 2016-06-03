@@ -1,0 +1,6 @@
+[Unit]
+Description=Battery Notify
+
+[Service]
+Type=simple
+ExecStart=/home/syui/.bin/battery-notify.sh
