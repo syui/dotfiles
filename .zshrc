@@ -2260,3 +2260,5 @@ export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 #LC_ALL="en_US.UTF-8"
 
 alias gpg="gpg2"
+export HOMEBREW_NO_ANALYTICS=1
+export PATH="$HOME/.composer/vendor/bin:$PATH"
