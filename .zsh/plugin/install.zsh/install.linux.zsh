@@ -73,7 +73,8 @@ fi
 if type tmux > /dev/null 2>&1;then
     if [ ! -d $DOTFILE/.tmux/tmux-powerline ];then
         TPOWERLINE=$DOTFILE/.tmux/tmux-powerline
-        git clone https://github.com/syui/tmux-powerline $DOTFILE/.tmux/tmux-powerline
+	git clone https://github.com/erikw/tmux-powerline $DOTFILE/.tmux/tmux-powerline
+        #git clone https://github.com/syui/tmux-powerline $DOTFILE/.tmux/tmux-powerline
     fi
     if [ ! -d $DOTFILE/.tmux/tmux-colors-solarized ];then
         git clone https://github.com/seebi/tmux-colors-solarized $DOTFILE/.tmux/tmux-colors-solarized
@@ -143,10 +144,10 @@ if [ ! -d ~/dotfiles/.zsh/plugin/zaw ];then
     git clone https://github.com/zsh-users/zaw ~/dotfiles/.zsh/plugin/zaw
 fi
 
-## syui/airchrome.zsh
-if [ ! -f $PLUGIN/airchrome.zsh/airchrome.zsh ];then
-    git clone https://github.com/syui/airchrome.zsh $PLUGIN/airchrome.zsh
-fi
+### syui/airchrome.zsh
+#if [ ! -f $PLUGIN/airchrome.zsh/airchrome.zsh ];then
+#    git clone https://github.com/syui/airchrome.zsh $PLUGIN/airchrome.zsh
+#fi
 
 ## syntax-highlight
 if [ ! -f $HOME/dotfiles/.zsh/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ];then
@@ -174,9 +175,9 @@ fi
 #        fi
 
 # C-f
-if [ ! -d ~/.qfcz ];then
-	git clone https://github.com/syui/qfcz $HOME/.qfcz
-fi
+#if [ ! -d ~/.qfcz ];then
+#	git clone https://github.com/syui/qfcz $HOME/.qfcz
+#fi
 
 if [ ! -f ~/.local/share/fonts/Ricomoon.ttf ];then
 	git clone https://github.com/syui/ricomoon ~/.local/share/fonts/ricomoon

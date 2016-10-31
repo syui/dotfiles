@@ -8,6 +8,6 @@ dotname=`bash -c "ls -dA -1 .*"`
 for (( i=3; i<=`echo "${dotname}" | wc -l`; i++ ))
 do
     filename=`echo "${dotname}" | awk "NR==$i"`
-    echo "ln -s $dotdire/$filename ~/$filename" | grep -v .config | grep -v .vim
+    echo "ln -s $dotdire/$filename ~/$filename" | grep -v .config | grep -v .vim | grep -v .git
     #ln -s $dotdire/$filename ~/$filename
 done
